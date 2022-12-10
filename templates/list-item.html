@@ -1,0 +1,16 @@
+<div class="list_item">
+  <div class="list_date-wrap">
+    <p class="list_date">Generated: {gen_date}</p>
+    <p class="list_date">Tweeted: {tweet_date}</p>
+  </div>
+  <div class="list_content-wrap">
+    <a href="/article/{tweet_id}" class="list_article-link">
+      <div class="list_text-wrap">
+        <h2 class="list_heading">{headline}</h2>
+        <p class="list_summary">{summary}</p>
+        <p class="list_author">By {tweet_author} and GPT</p>
+      </div>
+      <div class="list_img-wrap"><img src={image_src} alt={thumbnail_prompt} class="list_img"></div>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %} Db {% endblock %}
+{% block content %}
+<div class="section_form">
+  <div class="container is--form">
+    <form method="post" action="/delete_article">
+      <label for="tweet" class="form_label">Delete the following Tweet from the database:</label>
+      <input type="text" name="tweet_id" class="form_input" required>
+      <input type="password" name="db_key" class="form_input" required>
+      <button class="form_button" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

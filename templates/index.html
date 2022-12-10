@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %} Index {% endblock %}
+{% block content %}
+<div class="section_form">
+  <div class="container is--form">
+    <form method="post" action="/process_tweet">
+      <label for="tweet" class="form_label">Submit a Tweet and have GPT produce the news:</label>
+      <p class="form_help">It takes about 1 minute. You'll be redirected to this page with your article top of the list or an error page.</p>
+      <input type="text" name="tweet_url" class="form_input" placeholder="https://www.twitter.com/status/..." required>
+      <button class="form_button" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+<div class="section_article-list">
+  <div class="container">
+    <div class="latest_div">
+    </div>
+    <div class="article-list">
+      {% for post in posts %}
+      <div class="list_item">
+        <div class="list_date-wrap">
+          <p class="list_date">Generated: {{post["gen_date"][0:10] }}</p>
+          <p class="list_date">Tweeted: {{ post["tweet_date"][0:10] }}</p>
+        </div>
+        <div class="list_content-wrap">
+          <a href="/article/{{post["tweet_id"]}}" class="list_article-link">
+            <div class="list_text-wrap">
+              <h2 class="list_heading">{{ post["headline"] }}</h2>
+              <p class="list_summary">{{ post["summary"] }}</p>
+              <p class="list_author">By @{{ post["tweet_user_name"] }} and GPT</p>
+            </div>
+            <div class="list_img-wrap"><img src="static/images/{{ post["thumbnail_file"]}}.png" alt="{{ post["thumbnail_prompt"]}}" class="list_img"></div>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

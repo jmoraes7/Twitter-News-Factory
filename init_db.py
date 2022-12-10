@@ -1,0 +1,14 @@
+import sqlite3
+
+connection = sqlite3.connect('database.db')
+
+
+with open('schema.sql') as f:
+    connection.executescript(f.read())
+
+cur = connection.cursor()
+
+cur.execute("INSERT INTO posts (tweet_id, tweet_url, tweet_text, tweet_user_id, tweet_user_name, tweet_date, gen_date, headline, subheading, summary, article, thumbnail_file, thumbnail_prompt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",('1599616166699622401', 'https://twitter.com/COLDEX_STC/status/1599616166699622401?s=20&t=hUYXBQVjx6NC24s9Npo8-g','Despite 30 knot winds at the Allan Hills, Antarctica, where ice cores up to 2,700,000 years old have been found, @SpaceX Starlink continues to give the @NSF-supported COLDEX team unprecedented connectivity! @blueicehiggins @icy_pete https://t.co/Jxe0EPUKbw', '1436041577495990281', 'COLDEX_STC', '2022-12-05 04:06:28+00:00', '2022-12-07 21:39:11.934421', 'SpaceX Starlink Provides Unprecedented Connectivity to Antarctic COLDEX Team', 'SpaceX Starlink Provides Unprecedented Connectivity to Antarctic COLDEX Team Through Launch of 10,000 New Satellites','Despite treacherous weather conditions, SpaceX Starlink has provided the National Science Foundation-supported COLDEX team with unprecedented connectivity at the Allan Hills in Antarctica, where ice cores up to 2,700,000 years old have been found.', 'Despite 30 knot winds at the Allan Hills in Antarctica, a region where ice cores up to 2,700,000 years old have been found, the National Science Foundation-supported COLDEX team has been given unprecedented connectivity thanks to SpaceX Starlink.\n\nThe team, led by @blueicehiggins and @icy_pete, has been working to collect data from the Allan Hills, a task made possible thanks to the satellite internet connectivity provided by SpaceX Starlink.\n\n“It’s incredible to think that even in such an extreme environment as the Allan Hills, we’re able to take advantage of the technology available to us,” said Higgins.\n\nDespite the difficult conditions, the COLDEX team was able to collect a wealth of data in a short amount of time, thanks to the reliability of the satellite internet connection.\n\n“It’s amazing to think that this technology is enabling us to make discoveries that could otherwise be impossible,” said Pete.\n\nSpaceX Starlink’s satellite internet connection is not only revolutionizing the way data is collected in Antarctica, but also providing researchers with unprecedented access to the remote region.', 'despite_30_knot_winds_at_the_allan_hills', 'Despite 30 knot winds at the Allan Hills, Antarctica, @SpaceX Starlink provides the @NSF-supported COLDEX team with unprecedented connectivity!'))
+
+connection.commit()
+connection.close()

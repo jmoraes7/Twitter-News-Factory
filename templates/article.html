@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %} Article {% endblock %}
+{% block content %}
+<div class="section_article">
+  <div class="container is--article">
+    <h1 class="article_heading"><em>{{ post["headline"] }}</em></h1>
+    <p class="article_summary">{{ post["summary"] }}</p>
+    <div class="article_divider"></div><img src="{{url_for('static', filename="/images/"+ post["thumbnail_file"] + ".png") }}" alt={{ post["thumbnail_prompt"] }} class="article_image">
+    <p class="article_image-caption"> {{post["thumbnail_prompt"]}} </p>
+    <p class="article_author">
+    <strong> By 
+      <a href={{ post["tweet_url"]}} class="article_author-link">@{{ post["tweet_user_name"]}}</a> and 
+      <a href="https://chat.openai.com/chat" class="article_author-link">GPT</a>
+    </strong>
+    </p>
+    <div class="article_date-wrap">
+      <p class="article_date">Generated: {{ post["gen_date"][0:10] }}</p>
+      <p class="article_date">Tweeted: {{ post["tweet_date"][0:10] }}</p>
+    </div>
+    <div class="article_rich-text">
+      {% for para in article %}
+      <p class="article_paragraph">{{para}}</p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

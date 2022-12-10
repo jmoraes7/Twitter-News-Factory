@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>The GPT Times - {% block title %} {% endblock %}</title>
+    <link href="{{url_for('static', filename='style.css')}}" rel="stylesheet" type="text/css"/>
+      <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href='https://fonts.googleapis.com/css?family=libre-franklin' rel='stylesheet' type='text/css'>
+</head>
+<body class="body">
+  <div class="section_nav">
+    <div class="nav">
+      <a href="{{url_for('index')}}"><img class="nav_logo" src="{{url_for('static', filename='/images/gpt-times.svg')}}"/></a>
+    </div>
+  </div>
+  <div class="section_main">
+      {% block content %} {% endblock %}
+  </div>
+  <div class="section_footer">
+    <div class="footer">
+      <a href="{{url_for('index')}}"><img class="footer_logo" src="{{url_for('static', filename='/images/gpt-times.svg')}}"/></a>
+    </div>
+  </div>
+  <!--
+  This script places a badge on your repl's full-browser view back to your repl's cover
+  page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
+  teal, blue, blurple, magenta, pink!
+  -->
+  <script src="https://replit.com/public/js/replit-badge.js" theme="dark" defer></script>
+</body>
+</body>
+</html>
